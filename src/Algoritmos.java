@@ -1,4 +1,7 @@
+import java.util.Random;
+
 public class Algoritmos {
+	
 
 	public static void preenche_tela(){
 		char matriz[][] = new char [10][20];
@@ -12,8 +15,12 @@ public class Algoritmos {
 			}
 		}
 		
-		j = 0;
 		i = 0;
+		tot = 6;
+		
+		Random randomGenerator = new Random();
+	    j = randomGenerator.nextInt(20);
+	    i = randomGenerator.nextInt(10);
 		
 		if (tot > 0){ //Palavras já adicionadas
 			if(matriz[i][j] == '*'){
