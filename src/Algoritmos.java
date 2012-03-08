@@ -26,7 +26,9 @@ public class Algoritmos {
 	int j = 0;
 	int cont = 0;
 	int validPosition[] = {0, 0};
+	int alignment = 1; // <- Teste
 	
+	if(alignment == 1){ //If he wants a 1-horizontal alignment
 	while(cont != palavra.length){
 		
 		Random randomGenerator = new Random();
@@ -45,12 +47,35 @@ public class Algoritmos {
 			}
 		}
 	return validPosition;
+	
+	}else{ //If he wants a 2-vertical alignment
+		while(cont != palavra.length){
+			
+			Random randomGenerator = new Random();
+			j = randomGenerator.nextInt(20 - palavra.length);
+			i = randomGenerator.nextInt(10);
+			
+			validPosition[0] = i;
+			validPosition[1] = j;
+
+				for (int k = 0; k < palavra.length; k++){
+					if((matriz[i][j++]) == '*'){
+						cont++;
+					}else{
+						cont = 0;
+					}
+				}
+			}
+		return validPosition;
+		
+	}
 	}
 
 	public static int inserePalavras(char palavra[], int totalPalavras){
-
+		
 		char matriz[][] = Algoritmos.preencheMatriz();
 		int validPosition[] = ValidPositionGenerator(palavra, matriz);
+		
 		
 		int i = validPosition[0];
 		int j = validPosition[1];
