@@ -1,38 +1,76 @@
 import java.util.Random;
 
 public class Algoritmos {
-	
 
-	public static void preenche_tela(){
+	public static char [][] preencheMatriz(){
+
 		char matriz[][] = new char [10][20];
-		char p1[] = {'I','t','a','l','i','a'};
-		int i,j,h;
-		int tot = 6;
-
+		int i,j;
 		for(i=0; i<10; i++){
 			for(j=0; j<20; j++){
 				matriz[i][j] = '*';
 			}
 		}
-		
-		i = 0;
-		tot = 6;
+
+		return matriz;
+	}
+
+	public static void palavras(){
+		char p1[] = {'I','t','a','l','i','a'};
+		Algoritmos.inserePalavras(p1, 1);
+	}
+	
+	public static int[] ValidPositionGenerator(char palavra[], char matriz[][]){
+	
+	int i = 0;
+	int j = 0;
+	int cont = 0;
+	int validPosition[] = {0, 0};
+	
+	while(cont != palavra.length){
 		
 		Random randomGenerator = new Random();
-	    j = randomGenerator.nextInt(20);
-	    i = randomGenerator.nextInt(10);
+		i = randomGenerator.nextInt(10); //Linha
+		j = randomGenerator.nextInt(20 - palavra.length); //Coluna (14 pra não explodir o vetor);
 		
-		if (tot > 0){ //Palavras já adicionadas
-			if(matriz[i][j] == '*'){
-				if(j <= 14 ){
-					for(h = 0; h < 6; h++)
-						matriz[i][h] = p1[h];
-				}
+		validPosition[0] = i;
+		validPosition[1] = j;
 
+			for (int k = 0; k < palavra.length; k++){
+				if((matriz[i][k]) == '*'){
+					cont++;
+				}else{
+					cont = 0;
+				}
 			}
 		}
-		for(i=0; i<10; i++){
-			for(j=0; j<20; j++){
+	return validPosition;
+	}
+
+	public static int inserePalavras(char palavra[], int totalPalavras){
+
+		char matriz[][] = Algoritmos.preencheMatriz();
+		int validPosition[] = ValidPositionGenerator(palavra, matriz);
+		
+		int i = validPosition[0];
+		//int j = validPosition[1];
+
+			for(int k = 0; k < palavra.length; k++){
+					matriz[i][k] = palavra[k];
+					if (k == palavra.length){
+						break;
+						};
+					}
+			
+		Algoritmos.mostraMatriz(matriz);
+		return 0;	
+	}
+
+	
+	public static void mostraMatriz(char matriz[][]){
+
+		for(int i=0; i<10; i++){
+			for(int j=0; j<20; j++){
 				System.out.print(matriz[i][j]);
 			}
 			System.out.println();
