@@ -30,14 +30,14 @@ public class Algoritmos {
 	while(cont != palavra.length){
 		
 		Random randomGenerator = new Random();
-		i = randomGenerator.nextInt(10); //Linha
-		j = randomGenerator.nextInt(20 - palavra.length); //Coluna (14 pra não explodir o vetor);
+		j = randomGenerator.nextInt(20 - palavra.length);
+		i = randomGenerator.nextInt(10);
 		
 		validPosition[0] = i;
 		validPosition[1] = j;
 
 			for (int k = 0; k < palavra.length; k++){
-				if((matriz[i][k]) == '*'){
+				if((matriz[i][j++]) == '*'){
 					cont++;
 				}else{
 					cont = 0;
@@ -53,10 +53,10 @@ public class Algoritmos {
 		int validPosition[] = ValidPositionGenerator(palavra, matriz);
 		
 		int i = validPosition[0];
-		//int j = validPosition[1];
+		int j = validPosition[1];
 
 			for(int k = 0; k < palavra.length; k++){
-					matriz[i][k] = palavra[k];
+					matriz[i][j++] = palavra[k];
 					if (k == palavra.length){
 						break;
 						};
