@@ -104,14 +104,14 @@ public class Principal {
 		gerado = randomGenerator.nextInt(80) +1;
 
 		for (int i = 1; i < 81; i++){
-				gerado = randomGenerator.nextInt(80) +1;	
-				if(!verificadorDeDuplicadosJogo(jogo, gerado)){ //true se ja tem
-					jogo[i] = gerado;
-				}else{
-					i--;
-				}
+			gerado = randomGenerator.nextInt(80) +1;	
+			if(verificadorDeDuplicadosJogo(jogo, gerado)){ //false se ja tem
+				jogo[i] = gerado;
+			}else{
+				i--;
+			}
 		}
-		
+
 		//Imprime valor no vetor jogo
 		for (int j=1; j< 81; j++){
 			System.out.print(jogo[j] + " ");
@@ -123,14 +123,14 @@ public class Principal {
 
 		return jogo;
 	}
-	
+
 	public static boolean verificadorDeDuplicadosJogo(int vetor[], int numero){
 		for (int linha = 0; linha < 80; linha++){
 			if(numero == vetor[linha]){
-				return true; //ja tem
+				return false; //ja tem
 			}
 		}
-		return false;
+		return true;
 	}
 
 	public static int compara(int matriz[][]){
@@ -148,18 +148,17 @@ public class Principal {
 						acertos++;
 						mostraMatriz(matriz);
 						System.out.println();
-						
+
 						if (acertos == 25){
 							System.out.println("Opa, Ganhou na ultima rodada, tabuleiro limpo:");
 							mostraMatriz(matriz);
 							return 0;
 						}
-						
+
 					}
 				}
 			}
 		}
-	//	mostraMatriz(matriz);
 		return 0;
 	}
 
