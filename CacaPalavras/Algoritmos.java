@@ -4,7 +4,7 @@ public class Algoritmos {
 
 	public static char [][] preencheMatriz(){
 
-		char matriz[][] = new char [10][20];
+		char matriz[][] = new char [20][20];
 		int i,j;
 		for(i=0; i<10; i++){
 			for(j=0; j<20; j++){
@@ -15,29 +15,73 @@ public class Algoritmos {
 		return matriz;
 	}
 
-	public static void palavras(){
-		char matriz[][] = Algoritmos.preencheMatriz();
+//--------------------------------------------------------------------------------------------
+	public static void recebePalavras(){
+		//1 = Horizontal //2 = Vertical : !!10 letras Max!!
+		
+		char matriz[][] = Algoritmos.preencheMatriz(); //Enche de *
+		
+		for (int i = 0; i < 6; i++){
+			
+		}
+		
 		char p1[] = {'I','t','a','l','i','a'};
 		char p2[] = {'B','r','a','s','i','l'};
 		char p3[] = {'H','o','l','a','n','d','a'};
+		char p4[] = {'L','u','x','e','m','b','u','r','g','o'};
+		char p5[] = {'P','a','q','u','i','s','t','a','o'};
+		char p6[] = {'G','r','e','c','i','a'};
+		
+		//Palavra, contador de palavras e matriz//
+		System.out.println(Algoritmos.inversorDePalavras(p1));
+		
 		Algoritmos.inserePalavras(p1, 1, matriz);
 		Algoritmos.inserePalavras(p2, 2, matriz);
-		Algoritmos.inserePalavras(p3, 2, matriz);
+		Algoritmos.inserePalavras(p3, 3, matriz);
+		Algoritmos.inserePalavras(p4, 4, matriz);
+		Algoritmos.inserePalavras(p5, 5, matriz);
+		Algoritmos.inserePalavras(p6, 6, matriz);
+	}
+
+//--------------------------------------------------------------------------------------------	
+	public static char[] inversorDePalavras(char []palavra){
+		
+		  int len = palavra.length;
+		  char[] temporario = new char[len];  
+		  char[] resultado = new char[len];  
+		  
+		    for (int i = 0; i < len; i++) {  
+		      temporario[i] = palavra[i];
+		    }  
+		    
+		    for (int j = 0; j < len; j++) {  
+		      resultado[j] = temporario[len - 1 - j];  
+		    }  
+		    return resultado;
 	}
 	
+//--------------------------------------------------------------------------------------------	
 	public static int[] ValidPositionGenerator(char palavra[], char matriz[][]){
 	
 	int i = 0;
 	int j = 0;
 	int cont = 0;
-	int validPosition[] = {0, 0};
-	int alignment = 1; // <- Teste
+	//1 = Horizontal //2 = Vertical
+	int validPosition[] = {0, 0, 2}; // A posicao 2 é o tipo de alinhamento e deverá ser perguntado
 	
-	if(alignment == 1){ //If he wants a 1-horizontal alignment
+	//Horizontal ou vertical
+	validPosition[2] = Principal.orientacao();
+	
+	//Palavra invertida ou nao: 1 - Inverte
+	if(Principal.inverte() == 1){
+		palavra = Algoritmos.inversorDePalavras(palavra);
+	}
+	
+	if(validPosition[2] == 1){ //If he wants a 1-horizontal alignment
 		while(cont != palavra.length){
 			Random randomGenerator = new Random();
 			j = randomGenerator.nextInt(20 - palavra.length);
-			i = randomGenerator.nextInt(10);
+			i = randomGenerator.nextInt(20 - palavra.length);
 		
 			validPosition[0] = i;
 			validPosition[1] = j;
@@ -56,7 +100,7 @@ public class Algoritmos {
 		while(cont != palavra.length){
 			Random randomGenerator = new Random();
 			j = randomGenerator.nextInt(20 - palavra.length);
-			i = randomGenerator.nextInt(10);
+			i = randomGenerator.nextInt(20 - palavra.length);
 			validPosition[0] = i;
 			validPosition[1] = j;
 
@@ -71,30 +115,44 @@ public class Algoritmos {
 			return validPosition;
 		}
 }
-
-	public static int inserePalavras(char palavra[], int totalPalavras, char [][]matriz){
+	
+//--------------------------------------------------------------------------------------------
+	public static char inserePalavras(char palavra[], int totalPalavras, char [][]matriz){
 		
 		int validPosition[] = ValidPositionGenerator(palavra, matriz);
 		
-		
 		int i = validPosition[0];
 		int j = validPosition[1];
+		//1 = Horizontal //2 = Vertical
+		int orientacao =  validPosition[2];
 
+		if(orientacao == 1){
 			for(int k = 0; k < palavra.length; k++){
 					matriz[i][j++] = palavra[k];
 					if (k == palavra.length){
 						break;
 						};
 					}
+		}else{
+				if(orientacao == 2){
+					for(int k = 0; k < palavra.length; k++){
+						matriz[i++][j] = palavra[k];
+							if (k == palavra.length){
+								break;
+							};
+					}
+				}
+		}
 			
-		Algoritmos.mostraMatriz(matriz);
+		//Depois de inserir uma palavra mostramos a matriz.
+		Algoritmos.mostraMatriz(matriz); 
 		System.out.println();
-		System.out.println();
-		System.out.println();
-		return 0;	
+		
+		return 0;
 	}
 
-	
+//--------------------------------------------------------------------------------------------
+	//Só imprime a matriz que receber
 	public static void mostraMatriz(char matriz[][]){
 
 		for(int i=0; i<10; i++){
