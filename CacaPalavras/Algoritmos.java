@@ -4,7 +4,7 @@ public class Algoritmos {
 
 	public static char [][] preencheMatriz(){
 
-		char matriz[][] = new char [20][20];
+		char matriz[][] = new char [10][20];
 		int i,j;
 		for(i=0; i<10; i++){
 			for(j=0; j<20; j++){
@@ -28,9 +28,13 @@ public class Algoritmos {
 		char p1[] = {'I','t','a','l','i','a'};
 		char p2[] = {'B','r','a','s','i','l'};
 		char p3[] = {'H','o','l','a','n','d','a'};
-		char p4[] = {'L','u','x','e','m','b','u','r','g','o'};
+		char p4[] = {'L','u','x','e','m','b','u','r','g','0'};
 		char p5[] = {'P','a','q','u','i','s','t','a','o'};
 		char p6[] = {'G','r','e','c','i','a'};
+		char p7[] = {'I','t','a','l','i','a'};
+		char p8[] = {'I','t','a','l','i','a'};
+		char p9[] = {'I','t','a','l','i','a'};
+		char p10[] = {'I','t','a','l','i','a'};
 		
 		//Palavra, contador de palavras e matriz//
 		System.out.println(Algoritmos.inversorDePalavras(p1));
@@ -41,10 +45,16 @@ public class Algoritmos {
 		Algoritmos.inserePalavras(p4, 4, matriz);
 		Algoritmos.inserePalavras(p5, 5, matriz);
 		Algoritmos.inserePalavras(p6, 6, matriz);
+		Algoritmos.inserePalavras(p7, 6, matriz);
+		Algoritmos.inserePalavras(p8, 6, matriz);
+		Algoritmos.inserePalavras(p9, 6, matriz);
+		Algoritmos.inserePalavras(p10, 6, matriz);
+		
+		Algoritmos.mostraMatriz(matriz);
 	}
 
 //--------------------------------------------------------------------------------------------	
-	public static char[] inversorDePalavras(char []palavra){
+	public static char[] inversorDePalavras(char []palavra){ //Esta bosta nao funciona, ver depois.
 		
 		  int len = palavra.length;
 		  char[] temporario = new char[len];  
@@ -74,15 +84,16 @@ public class Algoritmos {
 	
 	//Palavra invertida ou nao: 1 - Inverte
 	if(Principal.inverte() == 1){
-		palavra = Algoritmos.inversorDePalavras(palavra);
+		System.out.println(Algoritmos.inversorDePalavras(palavra));
 	}
 	
 	if(validPosition[2] == 1){ //If he wants a 1-horizontal alignment
 		while(cont != palavra.length){
 			Random randomGenerator = new Random();
+			
+			i = randomGenerator.nextInt(9); //Alguma das 10 linhas
 			j = randomGenerator.nextInt(20 - palavra.length);
-			i = randomGenerator.nextInt(20 - palavra.length);
-		
+			
 			validPosition[0] = i;
 			validPosition[1] = j;
 
@@ -99,8 +110,17 @@ public class Algoritmos {
 	}else{ //If he wants a 2-vertical alignment
 		while(cont != palavra.length){
 			Random randomGenerator = new Random();
-			j = randomGenerator.nextInt(20 - palavra.length);
-			i = randomGenerator.nextInt(20 - palavra.length);
+			
+			i = randomGenerator.nextInt(11 - palavra.length); //Altura
+			
+			//Random com 0 parece não funcionar.
+			if(palavra.length == 10){
+				i = 0; //Linha zero, já que a palavra vai preencher uma linha vertical inteira//
+			}
+			///////////////
+			
+			j = randomGenerator.nextInt(20); //Alguma coluna até 20
+			
 			validPosition[0] = i;
 			validPosition[1] = j;
 
@@ -144,8 +164,9 @@ public class Algoritmos {
 				}
 		}
 			
-		//Depois de inserir uma palavra mostramos a matriz.
-		Algoritmos.mostraMatriz(matriz); 
+		//Depois de inserir uma palavra imprimos Roger
+		//Algoritmos.mostraMatriz(matriz); 
+		System.out.println("Roger that, cap!");
 		System.out.println();
 		
 		return 0;
@@ -154,7 +175,9 @@ public class Algoritmos {
 //--------------------------------------------------------------------------------------------
 	//Só imprime a matriz que receber
 	public static void mostraMatriz(char matriz[][]){
-
+		
+		
+System.out.println("Eis a bosta preenchida, ainda sem o lixo:");
 		for(int i=0; i<10; i++){
 			for(int j=0; j<20; j++){
 				System.out.print(matriz[i][j]);

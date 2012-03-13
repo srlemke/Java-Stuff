@@ -28,12 +28,12 @@ public class Principal extends Console {
 		do{
 			System.out.println("Inverter a palavra?");
 			inverte = Console.readInt("1-Sim 2-Nao.");
+			System.out.println();
 			if (inverte != 1 && inverte != 2){
 				System.out.println("Numero invalido, seu burro(a).");
 				System.out.println();
 			}
 		}while(inverte != 1 && inverte != 2);
-
 		return inverte;	
 	}
 }
