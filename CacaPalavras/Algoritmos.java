@@ -37,7 +37,7 @@ public class Algoritmos {
 		//char p10[] = {'I','t','a','l','i','a'};
 		
 		//Palavra, contador de palavras e matriz//
-		System.out.println(Algoritmos.inversorDePalavras(p1));
+		//System.out.println(Algoritmos.inversorDePalavras(p1));
 		
 		Algoritmos.inserePalavras(p1, 1, matriz);
 		/*Algoritmos.inserePalavras(p2, 2, matriz);
@@ -54,7 +54,7 @@ public class Algoritmos {
 	}
 
 //--------------------------------------------------------------------------------------------	
-	public static char[] inversorDePalavras(char []palavra){ //Esta bosta nao funciona, ver depois.
+	public static char[] inversorDePalavras(char palavra[]){ //Esta bosta nao funciona, ver depois.
 		
 		  int len = palavra.length;
 		  char[] temporario = new char[len];  
@@ -172,7 +172,20 @@ public class Algoritmos {
 		
 		return 0;
 	}
-
+//--------------------------------------------------------------------------------------------
+/*	public static boolean jogo(char matriz[][], int orientacao, int linha, int coluna, int intervaloA, int intervaloB){
+			if(orientacao == 1){ //1 para Horizontal
+				for(int i = intervaloA; i<=intervaloB; i++){
+					if(matriz[linha][coluna] != "*"){
+						coluna++;
+						return true;
+					}else{
+						return false;
+					}
+				}
+			}
+	}
+*/
 //--------------------------------------------------------------------------------------------
 	//Só imprime a matriz que receber
 	public static void mostraMatriz(char matriz[][]){
