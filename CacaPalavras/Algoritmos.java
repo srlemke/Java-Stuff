@@ -122,6 +122,7 @@ public class Algoritmos {
 				}
 			}
 		}
+		System.out.println();
 		Algoritmos.mostraMatriz(matriz);
 		return false;
 	}
