@@ -17,7 +17,7 @@ public class Principal extends Console {
 			if (Algoritmos.verificadorDeAcerto(orientacao, linha, coluna, comprimento, matriz)){
 				acertos++;
 			}
-		}while(acertos != 2);
+		}while(acertos != 8); //Só termina quando acertar as 8.
 		
 		System.out.println("Fim");
 	}

@@ -1,7 +1,6 @@
 import java.util.Random;
 
 public class Algoritmos {
-
 	//Só enxe de *//
 	public static char [][] preencheMatriz(){
 
@@ -17,7 +16,7 @@ public class Algoritmos {
 
 	//--------------------------------------------------------------------------------------------
 	public static char[][] recebePalavras(){
-		//1 = Horizontal //2 = Vertical : !!10 letras Max!!
+		//1 = Horizontal //2 = Vertical : !!10 letras Max ou explode a matriz na vertical!!
 		char matriz[][] = Algoritmos.preencheMatriz(); //Recebo uma matriz cheia de *
 		char p1[] = {'L','u','x','e','m','b','u','r','g','o'};
 		char p2[] = {'P','a','q','u','i','s','t','a','o'};
@@ -65,7 +64,6 @@ public class Algoritmos {
 		char p20[] = {'L','u','x','e','m','b','u','r','g','0'};
 		char p21[] = {'L','u','x','e','m','b','u','r','g','0'};*/
 
-		//Palavra, contador de palavras e matriz//
 		Algoritmos.inserePalavras(p1, matriz);
 		Algoritmos.inserePalavras(p2, matriz);
 		Algoritmos.inserePalavras(p3, matriz);
@@ -95,12 +93,11 @@ public class Algoritmos {
 
 		int i;
 		int cont = 0;
-		int acertos = 0;
 
 		if(orientacao == 1){ //1 para horizontal
 			for(i = coluna; i < comprimento + coluna; i++){
 				if(matriz[linha][i] != '*'){
-					System.out.println("Letra acertada :" + matriz[linha][i]); //teste
+					System.out.println("Letra acertada: " + matriz[linha][i]); //teste
 					matriz[linha][i] = 'X'; //teste
 					cont++;
 				}
@@ -135,8 +132,7 @@ public class Algoritmos {
 		int len = palavra.length;
 		char[] temporario = new char[len];  
 		char[] resultado = new char[len];
-		int i;
-		int j; 
+		int i,j;
 
 		for (i = 0; i < len; i++) {  
 			temporario[i] = palavra[i];
@@ -185,8 +181,8 @@ public class Algoritmos {
 				}else{
 					i = 0;
 				}
-				j = randomGenerator.nextInt(20); //Alguma coluna até 20
 
+				j = randomGenerator.nextInt(20); //Alguma coluna até 20
 				validPosition[0] = i;
 				validPosition[1] = j;
 
@@ -233,10 +229,15 @@ public class Algoritmos {
 	//Só imprime a matriz que receber -- Falta adicionar a parte de enxer de letras random aonde tem *//
 	public static void mostraMatriz(char matriz[][]){
 		int i,j;
-		System.out.println("Tabuleiro preenchido, ainda sem caracteres aleatórios:");
-		System.out.println();
+		
+		Random r = new Random();
+		
 		for(i = 0; i < 10; i++){
 			for(j = 0; j < 20; j++){
+				if (matriz[i][j] == '*'){
+					char randomChar = (char) (97 + r.nextInt(25));
+					matriz[i][j] = randomChar;
+				}
 				System.out.print(matriz[i][j]);
 			}
 			System.out.println();
