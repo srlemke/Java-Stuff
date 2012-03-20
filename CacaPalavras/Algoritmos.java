@@ -158,7 +158,7 @@ public class Algoritmos {
 		Random randomGenerator = new Random();
 
 		if(validPosition[2] == 1){ //Horizontal
-			while(cont != palavra.length){
+			while(cont < palavra.length){
 				i = randomGenerator.nextInt(10); //Alguma das 10 linhas
 				j = randomGenerator.nextInt(21 - palavra.length); //Comprimento da linha menos tam da palavra
 
@@ -166,8 +166,8 @@ public class Algoritmos {
 				validPosition[1] = j;
 
 				for (k = 0; k < palavra.length; k++){
-					if((matriz[i][j++]) == '*'){
-						cont++;
+					if((matriz[i][j++]) == '*'){ 
+						cont++; //Se tiver '*' suficientes pra palavra caber, sai e retorna a posição
 					}else{
 						cont = 0;
 					}
@@ -176,13 +176,8 @@ public class Algoritmos {
 			return validPosition;
 
 		}else{ //Vertical
-			while(cont != palavra.length){
-				if(palavra.length < 10 ){
-					i = randomGenerator.nextInt(11 - palavra.length);
-				}else{
-					i = 0;
-				}
-
+			while(cont < palavra.length){
+				i = randomGenerator.nextInt(11 - palavra.length);
 				j = randomGenerator.nextInt(20); //Alguma coluna até 20
 				validPosition[0] = i;
 				validPosition[1] = j;
@@ -203,6 +198,8 @@ public class Algoritmos {
 	public static void inserePalavras(char palavra[], char [][]matriz){
 
 		int validPosition[] = Algoritmos.geradorDePosicaoValida(palavra, matriz); //Receberei um i, j e orientação válidos
+		System.out.println("Linha: " + validPosition[0] + " Coluna: " + validPosition[1]);
+		
 		int i = validPosition[0];
 		int j = validPosition[1];
 		int k;
