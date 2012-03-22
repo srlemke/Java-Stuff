@@ -19,8 +19,8 @@ public class Algoritmos {
 
 	//--------------------------------------------------------------------------------------------
 	public static char[][] recebePalavras(){
-		int jogadas = 0;
-		int acertos = 0;
+		int acertos = 1;
+		int erros = 1;
 
 		//1 = Horizontal //2 = Vertical : !!10 letras Max ou explode a matriz na vertical!!
 		char matriz[][] = Algoritmos.preencheMatriz(); //Recebo uma matriz cheia de *
@@ -56,29 +56,30 @@ public class Algoritmos {
 
 			System.out.println();
 			if (Algoritmos.verificadorDeAcerto(orientacao, linha, coluna, comprimento, matriz)){
-				System.out.println("Acertou!");
+				System.out.println("Acertou! " + acertos + " de 6");
 				System.out.println();
 				Algoritmos.mostraMatriz(matriz);
 				acertos++;
-				jogadas++;
+				//jogadas++;
 			}else{
-				System.out.println("Errou!");
+				System.out.println("Errou! " + erros + " de 7");
+				erros++;
 				System.out.println();
 				Algoritmos.mostraMatriz(matriz);
-				jogadas++;
+				//jogadas++;
 			}
 
-			if(acertos == 6){
-				System.out.println("Todas as tentativas foram feitas, ganhou");
+			if(acertos == 7){ //Começa em 1
+				System.out.println("!Luser, ganhou!");
 				break;
 			}
 
-			if(jogadas == 10){
-				System.out.println("Todas as tentativas foram feitas, perdeu");
+			if(erros == 8){
+				System.out.println("!Winer, perdeu!");
 				break;
 			}
 
-		}while(acertos != 6); //Só termina quando acertar as 6.
+		}while(acertos != 7); //Só termina quando acertar as 6(começa em 1).
 		return matriz;
 	}
 
