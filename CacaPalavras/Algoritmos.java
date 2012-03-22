@@ -75,7 +75,7 @@ public class Algoritmos {
 			}
 
 			if(erros == 8){
-				System.out.println("!Winer, perdeu!");
+				System.out.println("!Winner, perdeu!");
 				break;
 			}
 
