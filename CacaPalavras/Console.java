@@ -39,7 +39,6 @@ public class Console
                   
                   done = true;
                   }
-            
             return r;
       }
 
@@ -67,9 +66,10 @@ public class Console
     
    public static int readInt(String prompt){
          while(true){
-               printPrompt(prompt);
+         		printPrompt(prompt);
                try{
-                     return Integer.valueOf(readLine().trim()).intValue();
+               		return Integer.valueOf(readLine().trim()).intValue();
+               		
             }catch(NumberFormatException e){
                          System.out.println("Not an integer. Please try again!");
                   }
@@ -86,14 +86,14 @@ public class Console
     */
     
    public static double readDouble(String prompt){
-   				while(true) {  
-   						printPrompt(prompt);
-         try{  
-         			return Double.parseDouble(readLine().trim());
-         		} 
-							catch(NumberFormatException e){  
-         						System.out.println ("Not a floating point number. Please try again!");
-         			}
-      }
+   	while(true) {  
+   			printPrompt(prompt);
+         	try{
+         		return Double.parseDouble(readLine().trim());
+         	} 
+		catch(NumberFormatException e){  
+			System.out.println ("Not a floating point number. Please try again!");
+		}
+	}
    }
 }
