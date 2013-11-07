@@ -1,13 +1,13 @@
 public class Console
 {  /**
       print a prompt on the console but don't print a newline
-      
-      @param prompt the prompt string to display
+            @param prompt the prompt string to display
     */
 
    public static void printPrompt(String prompt)
-   {  System.out.print(prompt + " ");
-      System.out.flush();
+   {  
+         System.out.print(prompt + " ");
+         System.out.flush();
    }
    
    /**
@@ -18,23 +18,30 @@ public class Console
     */
     
    public static String readLine()
-   {  int ch;
-      String r = "";
-      boolean done = false;
-      while (!done)
-      {  try
-         {  ch = System.in.read();
-            if (ch < 0 || (char)ch == '\n')
-               done = true;
-            else if ((char)ch != '\r') // weird--it used to do \r\n translation
-               r = r + (char) ch;
-         }
-         catch(java.io.IOException e)
-         {  done = true;
-         }
+   {
+            int ch;
+            String r = "";
+            boolean done = false;
+            
+            while (!done){
+                  try{
+                        ch = System.in.read();
+                        
+                        if {
+                              (ch < 0 || (char)ch == '\n')
+                              done = true;
+                        }else{
+                              if ((char)ch != '\r') // weird--it used to do \r\n translation
+                              r = r + (char) ch;
+                              }
+                  }
+                  catch(java.io.IOException e)
+                  
+                  done = true;
+                  }
+            
+            return r;
       }
-      return r;
-   }
 
    /**
       read a string from the console. The string is 
@@ -44,9 +51,9 @@ public class Console
       @return the input string (without the newline)
     */
     
-   public static String readLine(String prompt)
-   {  printPrompt(prompt);
-      return readLine();
+   public static String readLine(String prompt){
+         printPrompt(prompt);
+         return readLine();
    }
 
    /**
@@ -58,17 +65,15 @@ public class Console
       @exception NumberFormatException if bad input
     */
     
-   public static int readInt(String prompt)
-   {  while(true)
-      {  printPrompt(prompt);
-         try
-         {  return Integer.valueOf
-               (readLine().trim()).intValue();
-         } catch(NumberFormatException e)
-         {  System.out.println
-               ("Not an integer. Please try again!");
-         }
-      }
+   public static int readInt(String prompt){
+         while(true){
+               printPrompt(prompt);
+               try{
+                     return Integer.valueOf(readLine().trim()).intValue();
+            }catch(NumberFormatException e){
+                         System.out.println("Not an integer. Please try again!");
+                  }
+            }
    }
 
    /**
@@ -80,15 +85,15 @@ public class Console
       @exception NumberFormatException if bad input
     */
     
-   public static double readDouble(String prompt)
-   {  while(true)
-      {  printPrompt(prompt);
-         try
-         {  return Double.parseDouble(readLine().trim());
-         } catch(NumberFormatException e)
-         {  System.out.println
-         ("Not a floating point number. Please try again!");
-         }
+   public static double readDouble(String prompt){
+   				while(true) {  
+   						printPrompt(prompt);
+         try{  
+         			return Double.parseDouble(readLine().trim());
+         		} 
+							catch(NumberFormatException e){  
+         						System.out.println ("Not a floating point number. Please try again!");
+         			}
       }
    }
 }
