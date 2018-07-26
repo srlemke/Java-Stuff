@@ -1,9 +1,9 @@
 import java.util.Random;
 
-public class Principal {
+public class Main {
 
 	public static void main(String[] args) {
-		compara(preencheMatriz());
+		compare(preencheMatriz());
 	}
 
 	public static int [][]preencheMatriz(){
@@ -105,7 +105,7 @@ public class Principal {
 
 		for (int i = 1; i < 81; i++){
 			gerado = randomGenerator.nextInt(80) +1;	
-			if(verificadorDeDuplicadosJogo(jogo, gerado)){ //false se ja tem
+			if(DuplicatesChecker(jogo, gerado)){ //false se ja tem
 				jogo[i] = gerado;
 			}else{
 				i--;
@@ -124,7 +124,7 @@ public class Principal {
 		return jogo;
 	}
 
-	public static boolean verificadorDeDuplicadosJogo(int vetor[], int numero){
+	public static boolean DuplicatesChecker(int vetor[], int numero){
 		for (int linha = 0; linha < 80; linha++){
 			if(numero == vetor[linha]){
 				return false; //ja tem
@@ -133,7 +133,7 @@ public class Principal {
 		return true;
 	}
 
-	public static int compara(int matriz[][]){
+	public static int compare(int matriz[][]){
 
 		int jogo[] = new int[80];
 		jogo = jogo();
@@ -144,13 +144,13 @@ public class Principal {
 			for (int j = 0; j < 5; j++){
 				for(int g = 0; g < 5; g++){	
 					if(matriz[j][g] == jogo[i]){//
-						matriz[j][g] = 0; // 99 = dupe
+						matriz[j][g] = *; // 99 = dupe
 						acertos++;
 						mostraMatriz(matriz);
 						System.out.println();
 
 						if (acertos == 25){
-							System.out.println("Opa, Ganhou na ultima rodada, tabuleiro limpo:");
+							System.out.println("All number eliminated, you would have won now!:");
 							mostraMatriz(matriz);
 							return 0;
 						}
