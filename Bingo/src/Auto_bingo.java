@@ -150,7 +150,7 @@ public class Auto_bingo {
 						System.out.println();
 
 						if (acertos == 25){
-							System.out.println("All number eliminated, you would have won now!:");
+							System.out.println("All numbers eliminated, you would have won now!");
 							mostraMatriz(matriz);
 							return 0;
 						}
