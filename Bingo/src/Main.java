@@ -144,7 +144,7 @@ public class Main {
 			for (int j = 0; j < 5; j++){
 				for(int g = 0; g < 5; g++){	
 					if(matriz[j][g] == jogo[i]){//
-						matriz[j][g] = *; // 99 = dupe
+						matriz[j][g] = 0; // 99 = dupe
 						acertos++;
 						mostraMatriz(matriz);
 						System.out.println();
