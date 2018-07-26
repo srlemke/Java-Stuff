@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Main {
+public class Auto_bingo {
 
 	public static void main(String[] args) {
 		compare(preencheMatriz());
